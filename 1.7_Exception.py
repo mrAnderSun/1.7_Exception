@@ -29,11 +29,13 @@ def data():
   global operand2
   operation_base = ("*", "+", "/", "-")
 
-  operation = input("Enter operation: ")
-  assert operation in operation_base, f'Wrong operation! Need only {operation_base}'
+  data = input("Enter Notation: ")
+  data_list = data.split()
+  operation = data_list[0]
+  operand1 = data_list[1]
+  operand2 = data_list[2]
 
-  operand1 = input("First operand: ")
-  operand2 = input("Second operand: ")
+  assert operation in operation_base, f'Wrong operation! Need only {operation_base}'
 
   try:
       if isinstance(int(operand1), int):
@@ -41,9 +43,9 @@ def data():
       if isinstance(int(operand2), int):
           operand2 = int(operand2)
   except ValueError:
-      print("Wrong operand's type. Check your data!")
+      print("Wrong operand's Value. Check your data!")
   except TypeError:
-      print("Wrong operand's type. Check your data!")
+      print("Wrong operand's Type. Check your data!")
   else:
     print(f'{operation} {operand1} {operand2}')
     return arithmetic_operation(operation, operand1, operand2)
